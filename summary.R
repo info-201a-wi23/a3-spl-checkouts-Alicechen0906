@@ -1,6 +1,7 @@
 
 library(dplyr)
 library(stringr)
+library(tidyverse)
 
 
 spl_df <- read.csv("~/Desktop/2022-2023-All-Checkouts-SPL-Data.csv", stringsAsFactors = FALSE)
@@ -12,32 +13,42 @@ author_df <- spl_df %>%
   filter(str_detect(Creator,"George Orwell"))
 
 checkouts_per_month_GO <- author_df %>% 
-  group_by(date) %>%
-  summarize(total_checkouts = sum(Checkouts))
+  filter(CheckoutMonth == '9')%>%
+  summarize(total_checkouts_GO = sum(Checkouts, na.rm = T)) %>%
+  pull(total_checkouts_GO)
+
 
 book <- spl_df %>%
   filter(MaterialType == "BOOK") %>%
-  group_by(MaterialType) %>%
-  summarize(total_checkouts = max(Checkouts, na.rm = T))
+  summarize(total_checkouts_MT = max(Checkouts, na.rm = T)) %>%
+  pull(total_checkouts_MT)
+
 
 fiction <- spl_df %>%
   filter(Subjects == "Fiction") %>%
-  group_by(date) %>%
-  summarize(total_fiction = max(Checkouts, na.rm = T))
+  summarize(total_fiction = max(Checkouts, na.rm = T)) %>%
+  pull(total_fiction)
+
+
 
 checkouts_per_year <- spl_df %>%
-  group_by(CheckoutYear) %>%
-  summarize(total_checkouts = sum(Checkouts))
+  filter(CheckoutYear == '2022') %>%
+  summarize(total_checkouts_year = max(Checkouts, na.rm = T)) %>%
+  pull(total_checkouts_year)
+
 
 king_df <- spl_df %>% 
   filter(str_detect(Creator,"Stephen King"))
 
 checkouts_per_month_SK <- king_df %>%
-  group_by(date) %>%
-  summarize(total_checkouts = max(Checkouts))
+  filter(MaterialType == "EBOOK") %>%
+  summarize(total_checkouts_SK = max(Checkouts, na.rm = T)) %>%
+  pull(total_checkouts_SK)
 
-max_checkouts <- checkouts_per_month_SK %>%
-  filter(total_checkouts == max(total_checkouts))
+
+
+
+
 
 
 

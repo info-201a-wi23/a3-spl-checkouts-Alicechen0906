@@ -1,5 +1,5 @@
 ---
-title: "A3: SPL Library Checkouts"
+title: "A3:SPL Library Checkouts"
 author: "Alice Chen"
 Date: "2/24/2023"
 output: html_document
@@ -9,9 +9,12 @@ output: html_document
 
 The Seattle Public Library recorded the a monthly count of checkouts by title for physical and electronic books, and it began with checkouts that occurred in April 2005. This large dataset many different information, including checkout month, year, title, types, authors, and so on. The report demonstrates three graphs, the first one is the trends on total checkouts of two books. The numerical data and categorical data. The two books are The Great Gatsby and The Lord of the Rings, and the line trends demonstrate their total checkouts from 2013 to 2023. The second graph focused on trends on total checkouts of different types of books from 2017 to 2023 based on audiobook, an ebook, and book in this chart. The third graph presented the total checkouts in three different genres from 2022 to 2023, including comedy, fantasy, and fiction. According to my plots, the Lord of the Rings has much higher checkouts than The Great Gatsby from 2013 to 2023. The book had very high checkouts before 2021, but audiobook, ebook, and book had similar checkouts after 2021. The fiction book had the higher checkouts compared with comedy and fantasy book in the plot. The plots can help user to understand the trends and have a understanding on the distinctions.
 
-### Summary Information
 
-The sum checkouts for author "George Orwell" per month was different. The January 2023 had the highest number of sum of checkouts for author "George Orwell", which is 396 checkouts. The maximum number of total checkouts for book in MaterialType is 485 checkouts. The maximum number of total checkouts for fiction book is 50 checkouts in Jaunary 2023. The total checkouts in 2022 is 8402376 checkouts, and in 2023 is 794615 checkouts. The total checkouts for author "Stephen King" was different in each month, and October has the highest number of total checkouts with 153 checkouts.
+
+### Summary Information
+``````{r, code = readLines("summary.R"), include = FALSE}
+```
+The sum checkouts for author "George Orwell" in September was `r checkouts_per_month_GO` checkouts. The maximum number of total checkouts for book in MaterialType is `r book` checkouts. The maximum number of total checkouts for fiction book is `r fiction` checkouts in Jaunary 2023. The total checkouts is `r checkouts_per_year` checkouts. The total checkouts of EBOOK for author "Stephen King" was `r checkouts_per_month_SK` checkouts. 
 
 ### The Dataset
 
@@ -22,7 +25,7 @@ The Seattle Public Library published the data.This dataset includes a monthly co
 
 The first trend chart I plot was line chart that describe the trends on total checkouts of two books. The numerical data and categorical data. The two books are The Great Gatsby and The Lord of the Rings, and the line trends demonstrate their total checkouts from 2013 to 2023. The line chart can effectively illustrates the trends over the time. The blue line demonstrates the checkouts of The Lord of the Rings, and the read line illustrates the checkouts of The Great Gatsby. The chart obviously demonstrates that the checkouts of The Lord of the Rings is much higher than The Great Gatsby, especially in 2021. It is also clear to see that the checkouts number of The Lord of the Rings is rapidly drop down in 2023. The line chart shows clear distinction between two books. 
 
-```{r, echo = FALSE, warning = FALSE, code = readLines("Chart 1.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("Chart 1.R")}
 ```
 
 ### Second Trends Over Time Chart
@@ -30,7 +33,7 @@ The first trend chart I plot was line chart that describe the trends on total ch
 The second trend chart I plot was also line chart that present the trends on total checkouts of different types of books from 2017 to 2023. The numerical data is date, and categorical data. I picked type of an audiobook, an ebook, and book in this chart. The red line shows the total checkouts trends of audiobook, which has a increase over the time. The blue line demonstrates the ebook, which increases before 2021 and decreases after it. The green line shows the trend of book which is much higher than other two types, but it rapidly drop down in 2020. The decreases of book probably caused by covid-19. The line chart illustrates clear distinctions and trends between these three types of books. 
 
 
-```{r, echo = FALSE, code = readLines("Chart 2.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE,code = readLines("Chart 2.R")}
 ```
 
 ### Your Choice
@@ -38,7 +41,7 @@ The second trend chart I plot was also line chart that present the trends on tot
 I chose bar plot to illustrates the categorical data and numerical data with heights to the values. It demonstrates the total checkouts in three different genres from 2022 to 2023., including comedy, fantasy, and fiction. The blue column presents the total checkouts of fiction book, the green column presents the total checkouts of fantasy book, and the orange column presents the total checkouts of comedy book. The plot shows that the fiction type has the highest total checkouts, and the comedy type has the lowest total checkouts. The fiction type of book is most popular among these three genres. 
 
 
-```{r, echo = FALSE, code = readLines("Chart 3.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("Chart 3.R")}
 ```
 
 
